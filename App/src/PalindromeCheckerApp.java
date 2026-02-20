@@ -1,7 +1,17 @@
 class PalindromeCheckerApp{
     public static void main(String[] args) {
-        System.out.print("Welcome to Palindrome Checker App");
-        System.out.print("Vercel1.0");
-        System.out.println("System Inisilized");
+        String original = "madam";
+
+        // 2. Logic to reverse the string
+        // We use StringBuilder for easy string manipulation
+        String reversed = new StringBuilder(original).reverse().toString();
+
+        // 3. Conditional Statement (if-else) to check palindrome
+        // Note: Use .equals() for string comparison, not ==
+        if (original.equals(reversed)) {
+            System.out.println("The word '" + original + "' is a palindrome.");
+        } else {
+            System.out.println("The word '" + original + "' is NOT a palindrome.");
+        }
     }
 }
