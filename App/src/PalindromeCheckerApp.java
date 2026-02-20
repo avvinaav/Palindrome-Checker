@@ -1,17 +1,22 @@
 class PalindromeCheckerApp{
     public static void main(String[] args) {
-        String original = "madam";
+        // 1. Hardcoded string to check
+        String original = "radar";
+        String reversed = ""; // Initializing an empty string for reversal
 
-        // 2. Logic to reverse the string
-        // We use StringBuilder for easy string manipulation
-        String reversed = new StringBuilder(original).reverse().toString();
+        // 2. Loop (for loop) - Iterating backwards
+        // We start at the last index (length - 1) and go to index 0
+        for (int i = original.length() - 1; i >= 0; i--) {
+            // 3. String Concatenation (+)
+            // This builds the reversed string character by character
+            reversed = reversed + original.charAt(i);
+        }
 
-        // 3. Conditional Statement (if-else) to check palindrome
-        // Note: Use .equals() for string comparison, not ==
-        if (original.equals(reversed)) {
-            System.out.println("The word '" + original + "' is a palindrome.");
+        // 4. equals() Method - Compare content, not memory addresses
+        if (original.equalsIgnoreCase(reversed)) {
+            System.out.println("Result: '" + original + "' is a palindrome.");
         } else {
-            System.out.println("The word '" + original + "' is NOT a palindrome.");
+            System.out.println("Result: '" + original + "' is NOT a palindrome.");
         }
     }
 }
