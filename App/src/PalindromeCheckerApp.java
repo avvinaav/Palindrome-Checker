@@ -1,35 +1,35 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class PalindromeCheckerApp{
     public static void main(String[] args) {
         // 1. Hardcoded string
-        String input = "noon";
+        String input = "rotator";
 
-        // 2. Initialize Data Structures
-        // Note: Queue is an interface in Java, so we use LinkedList to implement it
-        Stack<Character> stack = new Stack<>();
-        Queue<Character> queue = new LinkedList<>();
+        // 2. Data Structure: Deque
+        // ArrayDeque is a highly efficient implementation of the Deque interface
+        Deque<Character> deque = new ArrayDeque<>();
 
-        // 3. Enqueue and Push characters
+        // 3. Insert characters into deque
         for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
-            stack.push(c);   // Added to top
-            queue.add(c);    // Added to back (Enqueue)
+            deque.addLast(input.charAt(i));
         }
 
-        // 4. Logical Comparison (Dequeue vs Pop)
+        // 4. Comparison Logic (Remove First & Last)
         boolean isPalindrome = true;
-        while (!stack.isEmpty()) {
-            // pop() gets the LAST character, poll() gets the FIRST character
-            if (stack.pop() != queue.poll()) {
+
+        // We continue as long as there are at least 2 characters to compare
+        while (deque.size() > 1) {
+            char first = deque.removeFirst();
+            char last = deque.removeLast();
+
+            if (first != last) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        // 5. Print Result
+        // 5. Display Result
         if (isPalindrome) {
             System.out.println("Result: '" + input + "' is a palindrome.");
         } else {
